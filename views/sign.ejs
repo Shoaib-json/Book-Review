@@ -1,0 +1,26 @@
+<% layout("/layout/boilerplate") -%>
+<body>
+    <h2>Add New User</h2>
+
+<form action="/user/create" method="POST">
+
+  <div>
+    <label for="user">Username:</label>
+    <input type="text" name="user" id="username" required>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+  </div>
+
+  <button type="submit">Add User</button>
+</form>
+</body>
+</html>
+

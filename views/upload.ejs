@@ -1,0 +1,16 @@
+<% layout("/layout/boilerplate") -%>
+<body>
+  <form action="/books" method="POST" enctype="multipart/form-data">
+    <input type="text" placeholder="Enter the name" name="name" required><br>
+    <input type="text" placeholder="Enter the name" name="author" required><br>
+
+    <input type="text" placeholder="Enter the category" name="category" required><br>
+    <textarea name="description" placeholder="Enter the summary about the book" required></textarea><br>
+    <input type="number" name="price" required><br>
+    
+    <input type="file" name="image" required><br>
+    
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

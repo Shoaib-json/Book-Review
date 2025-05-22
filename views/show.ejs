@@ -1,0 +1,59 @@
+<% layout("/layout/boilerplate") -%>
+<body>
+    <div class="listing-container">
+    
+        <div class="listing-card">
+            <img src="<%= lists.image %>" class="listing-image" alt="Property Image">
+            
+            <div class="listing-details">
+                <h1 class="listing-title"><%= lists.name %></h1>
+                <p class="listing-description"><%= lists.description %></p>
+            </div>
+
+            <ul class="listing-info">
+                <li><%= lists.category %></li>
+            </ul>
+        </div>
+
+        <!-- Review Form -->
+        <div class="review-section">
+            <form method="post" action="/review/<%= lists._id %>" class="review-form">
+                <h2>Leave a Review</h2>
+                <input name="rating" placeholder="Enter the rating between 1 to 5 " required>
+
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea name="comment" id="comment" required class="review-comment"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-submit">Submit Review</button>
+            </form>
+        </div>
+
+        <!-- Reviews List -->
+        <div class="reviews-list">
+            <h2>Reviews</h2>
+            <% if (lists.review && lists.review.length > 0) { %>
+                <ul>
+                    <% for (let review of lists.review) { %>
+                        <li class="review-item">
+                            <strong><%= review.user?.user || 'Anonymous' %></strong>
+                            <div class="review-content">
+                                <div class="review-rating">Rating: <%= review.rating %> ★</div>
+                                <div class="review-comment">Comment: <%= review.comment %></div>
+                            </div>
+
+                            <% if (currUser && String(currUser._id) === String(review.user?._id)) { %>
+                                <form method="POST" action="/review/<%= lists._id %>/<%= review._id %>?_method=DELETE" class="review-delete-form">
+                                    <button type="submit" class="btn btn-delete-review">Delete Review</button>
+                                </form>
+                            <% } %>
+                        </li>
+                    <% } %>
+                </ul>
+            <% } else { %>
+                <p class="no-reviews">No reviews yet</p>
+            <% } %>
+        </div>
+    </div>
+</body>

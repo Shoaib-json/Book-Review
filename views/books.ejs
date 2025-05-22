@@ -1,0 +1,22 @@
+<% layout("/layout/boilerplate") -%>
+<body>
+    <div class="container mt-5">
+    <div class="row">
+      <% for (let p of q) { %>
+        <div class="col-3 mb-4"> 
+          <a href="/books/<%= p._id %>" class="text-decoration-none"> 
+            <div class="card h-100"> 
+              <img src="<%= p.image %>" class="card-img-top" alt="Image" height="100 rem">
+              <div class="card-body">
+                <h5 class="card-title"><%= p.name %></h5>
+                <p class="card-text"><%= p.category %></p>
+                <p><%= p.description %></p>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
